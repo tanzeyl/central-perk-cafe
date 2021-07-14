@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <p class="UsersNew-title">Welcome new User!<br>To make online orders, you need to create an account first.</p>
+<section class="UsersNew">
+<%= form_with url: customers_path do |form| %>
+<div class="FormSection">
+  <p><center class="FormInput-label">First Name</center></p>
+  <center><%= form.text_field :first_name, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Last name</center></p>
+  <center><%= form.text_field :last_name, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Email</center></p>
+  <center><%= form.email_field :email, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Password</center></p>
+  <center><%= form.password_field :password, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+<center><%= form.submit "Sign Up!", class: "FormSubmit" %></center>
+</div>
+<% end %>
+</section>
+  </div>
+</div>
+<br><br><br><br><br>

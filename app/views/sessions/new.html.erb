@@ -1,0 +1,21 @@
+<br><br><br>
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <p class="UsersNew-title">Sign In</p>
+    <section class="UsersNew">
+    <%= form_with url: sessions_path do |form| %>
+    <div class="FormSection">
+      <center><p class="FormInput-label">Email</p></center>
+      <center><%= form.email_field :email, class: "Form-Input" %></center>
+    </div>
+    <div class="FormSection">
+      <center><p class="FormInput-label">Password</p></center>
+      <center><%= form.password_field :password, class: "Form-Input" %></center>
+    </div>
+    <div class="FormSection">
+    <center><%= form.submit "Sign In!", class: "FormSubmit" %></center>
+    </div>
+    <% end %>
+    </section>
+  </div>
+</div>
