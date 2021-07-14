@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class OrderController < ApplicationController
   #before_action :authenticate_user
 
   def new
