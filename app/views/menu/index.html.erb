@@ -1,29 +1,50 @@
-<div class="row">
-  <div class="col-xs-12 col-md-4 col-md-offset-4">
-    <p class="UsersNew-title">Welcome new User!<br>To make online orders, you need to create an account first.</p>
-<section class="UsersNew">
-<%= form_with url: customers_path do |form| %>
-<div class="FormSection">
-  <p><center class="FormInput-label">First Name</center></p>
-  <center><%= form.text_field :first_name, class: "Form-Input" %></center>
-</div>
-<div class="FormSection">
-  <p><center class="FormInput-label">Last name</center></p>
-  <center><%= form.text_field :last_name, class: "Form-Input" %></center>
-</div>
-<div class="FormSection">
-  <p><center class="FormInput-label">Email</center></p>
-  <center><%= form.email_field :email, class: "Form-Input" %></center>
-</div>
-<div class="FormSection">
-  <p><center class="FormInput-label">Password</center></p>
-  <center><%= form.password_field :password, class: "Form-Input" %></center>
-</div>
-<div class="FormSection">
-<center><%= form.submit "Sign Up!", class: "FormSubmit" %></center>
-</div>
-<% end %>
-</section>
+<center><h3 class="PageTitle">Welcome New User. Here is our menu.</h3></center>
+  <div class="page-header header-filter shopping-background" data-parallax="true" filter-color="blue" style="height:120px">
   </div>
+
+<div class="MenuBackground">
+        <div class="row">
+          <div class="col-xs-12">
+            <br>
+            <h1 class="card-title text-center">Menu</h1>
+            <% MenuCategory.where(available: true).each do |category| %>
+              <% menuItems = MenuItem.where(menu_category_id: category.id, available: true) %>
+              <% unless menuItems.count == 0 %>
+
+                <div class="table-responsive">
+                  <center><h3 class="MenuTitle"><%= category.name.upcase %></h3></center>
+                  <table class="table table-shopping">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Serial Number</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Add</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% index = 1 %>
+                      <% menuItems.each do |menu| %>
+
+                        <tr class="text-center">
+                          <td><%= index %></td>
+                              <% index += 1 %>
+                          <td><%= menu.name %></td>
+                          <td><%= menu.description %></td>
+                          <td><%= menu.price %></td>
+                          <td><a href="#" class="btn btn-primary">Add to Cart</a></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+                <hr/>
+              <% end %>
+            <% end %>
+          </div>
+          </div>
+        </div>
+      </div>
 </div>
-<br><br><br><br><br>
