@@ -9,7 +9,11 @@ class MenuController < ApplicationController
     id = params[:id]
     @ID = id
     order = MenuItem.find(id)
-    new_order = OrderItem.create!(menu_item_id: order.id, menu_item_name: order.name, menu_item_price: order.price)
+    new_order = OrderItem.create!(menu_item_id: order.id,
+                                  menu_item_name: order.name,
+                                  menu_item_price: order.price,
+                                  menu_item_quatity: 1,
+                                  user_id: @current_user.id)
     redirect_to "/menu"
   end
 

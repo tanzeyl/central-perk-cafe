@@ -6,7 +6,9 @@ class OrdersController < ApplicationController
 
   def create
     new_order = Order.create!(date: Date.today, user_id: session[:current_user_id], status: "pending")
-    redirect_to "/menu"
+    order = OrderItem.where(user_id: @current_user_id)
+    order.destroy
+    redirect_to "/"
   end
 
 end
