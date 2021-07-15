@@ -56,8 +56,11 @@
     <table class="table table-shopping">
       <thead>
         <tr class="text-center">
+          <% index = 1 %>
+          <th>Serial Number</th>
           <th>Item Name</th>
           <th>Price</th>
+          <th>Actions</th>
         </tr>
       </thead>
 
@@ -65,8 +68,13 @@
       <% total = 0 %>
         <% orderitems.each do |order| %>
           <tr class="text-center">
+            <td><%= index %></td>
+            <% index = index + 1 %>
             <td><%= order.menu_item_name %></td>
             <td>₹ <%= order.menu_item_price %></td>
+            <td><%= form_with url: "menu/#{order.id}", method: "delete"  do |form| %>
+              <%= form.submit "Remove from Cart", class: "btn btn-primary" %>
+              <% end %></td>
             <% total = total + order.menu_item_price %>
             </tr>
         <% end %>

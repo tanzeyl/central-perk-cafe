@@ -1,1 +1,38 @@
-<p>Hello from orders/new</p>
+<div class="MenuBackground">
+  <% orderitems = OrderItem.all %>
+  <center class="ShopCart-header"><h1>Your Cart</h1></center>
+  <div class="table-responsive">
+    <table class="table table-shopping">
+      <thead>
+        <tr class="text-center">
+          <% index = 1 %>
+          <th>SR No.</th>
+          <th>Item Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% total = 0 %>
+        <% orderitems.each do |order| %>
+          <tr class="text-center">
+            <td><%= index %></td>
+            <% index = index + 1 %>
+            <td><%= order.menu_item_name %></td>
+            <td>₹ <%= order.menu_item_price %></td>
+            <% total = total + order.menu_item_price %>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="ShopCart-total">
+     <h2>Total: ₹ <%= total %> /-</h2>
+     </div>
+    <div>
+      <h3 class="ShopCart-checkout"><%= link_to "Go back to Menu", "/menu", class: "CheckoutText" %></h3>
+    </div>
+    <div>
+      <h3 class="ShopCart-checkout"><%= link_to "Place Order", orders_path, method: "post", class: "CheckoutText" %></h3>
+    </div>
+  </div>
+</div><br><br><br><br><br><br><br><br><br><br><br>

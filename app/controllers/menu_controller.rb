@@ -12,4 +12,10 @@ class MenuController < ApplicationController
     new_order = OrderItem.create!(menu_item_id: order.id, menu_item_name: order.name, menu_item_price: order.price)
     redirect_to "/menu"
   end
+
+  def destroy
+    id = params[:id]
+    OrderItem.where(id: id)[0].destroy
+    redirect_to "/menu"
+  end
 end
