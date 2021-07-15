@@ -1,5 +1,5 @@
 <div class="MenuBackground">
-  <% orderitems = OrderItem.all %>
+  <% orderitems = OrderItem.where(user_id: @current_user.id) %>
   <center class="ShopCart-header"><h1>Your Cart</h1></center>
   <div class="table-responsive">
     <table class="table table-shopping">
