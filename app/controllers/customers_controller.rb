@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  #has_many :orders
+  skip_before_action :ensure_user_logged_in
 
   def new
     render "customers/new"
@@ -14,11 +14,18 @@ class CustomersController < ApplicationController
       role: "customer" )
       if customer.save
         session[:current_user_id] = customer.id
-        redirect_to menu_index_path
+        redirect_to "/dashboard"
       else
         flash[:error] = customer.errors.full_messages.join(", ")
         redirect_to new_customer_path
       end
+  end
+
+  def destroy
+    id = params[:id]
+    user = Customer.find(id)
+    user.destroy
+    redirect_to "/"
   end
 
 end
