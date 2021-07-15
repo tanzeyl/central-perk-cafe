@@ -33,9 +33,11 @@
                               <% index += 1 %>
                           <td><%= menu.name %></td>
                           <td><%= menu.description %></td>
-                          <td><%= menu.price %></td>
-                          <td><a href="#" class="btn btn-primary">Add to Cart</a></td>
-                        </tr>
+                          <td>₹ <%= menu.price %></td>
+                          <td><%= form_with url: "menu/#{menu.id}", method: "put"  do |form| %>
+                                <%= form.submit "Add to Cart", class: "btn btn-primary" %>
+                              <% end %></td>
+                          </tr>
                       <% end %>
                     </tbody>
                   </table>
@@ -48,3 +50,37 @@
         </div>
       </div>
 </div>
+<hr>
+<div class="MenuBackground">
+  <% orderitems = OrderItem.all %>
+  <center><h1>Your Cart</h1></center>
+  <div class="table-responsive">
+    <table class="table table-shopping">
+      <thead>
+        <tr class="text-center">
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% total = 0 %>
+        <% orderitems.each do |order| %>
+          <tr class="text-center">
+            <td><%= order.menu_item_name %></td>
+            <td>₹ <%= order.menu_item_price %></td>
+            <td><%= order.menu_item_quatity %></td>
+            <% total = total + order.menu_item_price %>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="ShopCart-total">
+     <h2>Total: <%= total %></h2>
+     </div>
+    <footer>
+      <p>Checkout</p>
+    </footer>
+  </div>
+</div><br><br><br><br><br><br><br><br><br><br><br>

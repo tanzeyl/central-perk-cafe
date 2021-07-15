@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
       role: "customer" )
       if customer.save
         session[:current_user_id] = customer.id
-        redirect_to "/menu"
+        redirect_to menu_index_path
       else
         flash[:error] = customer.errors.full_messages.join(", ")
         redirect_to new_customer_path
