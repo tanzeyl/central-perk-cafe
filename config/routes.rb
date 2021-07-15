@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session
   get "/dashboard" => "dashboard#index"
+  get "/history" => "orders#history", as: :history
 end

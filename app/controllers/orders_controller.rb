@@ -10,4 +10,8 @@ class OrdersController < ApplicationController
     redirect_to "/dashboard"
   end
 
+  def history
+    render "history"
+  end
+
 end
