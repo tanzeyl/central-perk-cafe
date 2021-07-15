@@ -1,6 +1,4 @@
 <center><h3 class="PageTitle">Welcome New User. Here is our menu.</h3></center>
-  <div class="page-header header-filter shopping-background" data-parallax="true" filter-color="blue" style="height:120px">
-  </div>
 
 <div class="MenuBackground">
         <div class="row">
@@ -60,7 +58,6 @@
         <tr class="text-center">
           <th>Item Name</th>
           <th>Price</th>
-          <th>Quantity</th>
         </tr>
       </thead>
 
@@ -70,17 +67,16 @@
           <tr class="text-center">
             <td><%= order.menu_item_name %></td>
             <td>₹ <%= order.menu_item_price %></td>
-            <td><%= order.menu_item_quatity %></td>
             <% total = total + order.menu_item_price %>
             </tr>
         <% end %>
       </tbody>
     </table>
     <div class="ShopCart-total">
-     <h2>Total: <%= total %></h2>
+     <h2>Total: ₹ <%= total %> /-</h2>
      </div>
-    <footer>
-      <p>Checkout</p>
-    </footer>
+    <div>
+      <h3 class="ShopCart-checkout"><%= link_to "Checkout", orders_path, class: "CheckoutText" %></h3>
+    </div>
   </div>
 </div><br><br><br><br><br><br><br><br><br><br><br>
