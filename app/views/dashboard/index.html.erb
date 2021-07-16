@@ -1,13 +1,32 @@
 <div class="DashboardButton">
-<h3><%= link_to "Make an Order", "/menu", class: "DashboardText" %></h3>
+  <h3><%= link_to "Make an Order", "/menu", class: "DashboardText" %></h3>
 </div>
 <br>
 <div class="DashboardButton">
-<h3><%= link_to "Check Order History", "/history", class: "DashboardText" %></h3>
+  <h3><%= link_to "Check Order History", "/history", class: "DashboardText" %></h3>
 </div>
 <br>
-<% if @current_user.role == "clerk" %>
+<% if @current_user.role == "clerk" or @current_user.role = "admin" %>
   <div class="DashboardButton">
   <h3><%= link_to "Review pending orders", "/pendingorders", class: "DashboardText" %></h3>
   </div>
+<br>
 <% end %>
+<% if @current_user.role == "admin" %>
+  <div class="DashboardButton">
+  <h3><%= link_to "Edit Menu", admin_menu_index_path, class: "DashboardText" %></h3>
+  </div>
+<% end %>
+<br>
+<% if @current_user.role == "admin" %>
+  <div class="DashboardButton">
+  <h3><%= link_to "Add a new Admin", "/pendingorders", class: "DashboardText" %></h3>
+  </div>
+<% end %>
+<br>
+<% if @current_user.role == "admin" %>
+  <div class="DashboardButton">
+  <h3><%= link_to "Add a new Clerk", "/pendingorders", class: "DashboardText" %></h3>
+  </div>
+<% end %>
+<br>

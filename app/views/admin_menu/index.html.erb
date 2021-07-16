@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <p class="UsersNew-title">Add a new Menu Category</p>
+<section class="UsersNew">
+<%= form_with url: menu_index_path do |form| %>
+<div class="FormSection">
+  <p><center class="FormInput-label">Category Name</center></p>
+  <center><%= form.text_field :name, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Status</center></p>
+  <center><%= form.text_field :available, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+<center><%= form.submit "ADD", class: "FormSubmit" %></center>
+</div>
+<% end %>
+</section>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <p class="UsersNew-title">Add a new Menu Item</p>
+<section class="UsersNew">
+<%= form_with url: menu_items_path do |form| %>
+<div class="FormSection">
+  <p><center class="FormInput-label">To which menu category does this item belong?</center></p>
+  <center>
+  <% menu = MenuCategory.all %>
+    <select name="menu" class="FormInput-lael">
+    <% menu.each do |menu| %>
+      <option value="<%= menu.name %>"><%= menu.name %></option>
+      <% end %>
+    </select>
+  </center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Name</center></p>
+  <center><%= form.text_field :name, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Description</center></p>
+  <center><%= form.text_field :description, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Price</center></p>
+  <center><%= form.text_field :price, class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+  <p><center class="FormInput-label">Status</center></p>
+  <center><%= form.text_field :available, placeholder: "True/False", class: "Form-Input" %></center>
+</div>
+<div class="FormSection">
+<center><%= form.submit "ADD", class: "FormSubmit" %></center>
+</div>
+<% end %>
+</section>
+  </div>
+</div>
+<br><br><br><br><br>

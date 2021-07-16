@@ -1,9 +1,9 @@
 <div class="MenuBackground">
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="card-title text-center">All Pending Orders</h1>
+      <h1 class="card-title text-center">Invoice</h1>
       <% index = 1 %>
-      <% Order.all.each do |orders| %>
+      <% Order.where(id: params[:id]).each do |orders| %>
           <div class="table-responsive">
             <table class="table table-shopping">
               <thead>
@@ -12,8 +12,6 @@
                   <th>Order Date</th>
                   <th>Delivery Status</th>
                   <th>Cost</th>
-                  <th>Actions</th>
-                  <th>Invoice</th>
                 </tr>
               </thead>
               <tbody>
@@ -23,24 +21,12 @@
                   <td><%= orders.date.to_s(:long) %></td>
                   <td><%= orders.status.upcase %></td>
                   <td>₹ <%= orders.cost %></td>
-                  <td>
-                    <% if orders.status == "pending" %>
-                      <%= form_with url: "/change_status/#{orders.id}", method: "post"  do |form| %>
-                        <%= form.submit "Mark as delivered", class: "btn btn-primary" %>
-                      <% end %>
-                      <% else %>
-                        <p>Delivered</p>
-                      <% end %>
-                  </td>
-                  <td><%= form_with url: "/singleorder/#{orders.id}", method: "get"  do |form| %>
-                        <%= form.submit "Generate Invoice", class: "btn btn-primary" %>
-                      <% end %></td>
                   </tr>
               </tbody>
             </table>
           </div>
       <% end %>
-    </div>
+      <h3 class="ShopCart-checkout"><%= link_to "Print Invoice", "", class: "CheckoutText" %></h3>    </div>
     </div>
   </div>
 </div>

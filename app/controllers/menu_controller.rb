@@ -4,7 +4,6 @@ class MenuController < ApplicationController
     render "index"
   end
 
-
   def update
     id = params[:id]
     order = MenuItem.find(id)
@@ -14,6 +13,14 @@ class MenuController < ApplicationController
                                   menu_item_quatity: 1,
                                   user_id: @current_user.id)
     redirect_to "/menu"
+  end
+
+  def create
+    new_category = MenuCategory.new(name: params[:name], available: params[:available].downcase)
+    if new_category.save
+      flash[:error] = "New Category Successfully Created."
+      redirect_to admin_menu_index_path
+    end
   end
 
   def destroy

@@ -27,4 +27,8 @@ class OrdersController < ApplicationController
     redirect_to "/pendingorders"
   end
 
+  def show
+    render "singleorder"
+  end
+
 end
