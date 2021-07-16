@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   delete "/signout" => "sessions#destroy", as: :destroy_session
   get "/dashboard" => "dashboard#index"
   get "/history" => "orders#history", as: :history
+  get "/pendingorders" => "orders#orderupdate"
+  post "/change_status/:id" => "orders#change_status"
 end

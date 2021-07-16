@@ -7,7 +7,6 @@ class MenuController < ApplicationController
 
   def update
     id = params[:id]
-    @ID = id
     order = MenuItem.find(id)
     new_order = OrderItem.create!(menu_item_id: order.id,
                                   menu_item_name: order.name,

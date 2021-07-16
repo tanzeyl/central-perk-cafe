@@ -5,3 +5,9 @@
 <div class="DashboardButton">
 <h3><%= link_to "Check Order History", "/history", class: "DashboardText" %></h3>
 </div>
+<br>
+<% if @current_user.role == "clerk" %>
+  <div class="DashboardButton">
+  <h3><%= link_to "Review pending orders", "/pendingorders", class: "DashboardText" %></h3>
+  </div>
+<% end %>

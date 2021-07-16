@@ -1,1 +1,33 @@
-<h3>kj</h3>
+<div class="MenuBackground">
+        <div class="row">
+          <div class="col-xs-12">
+            <br>
+            <h1 class="card-title text-center">Your Order History</h1>
+            <% Order.where(user_id: @current_user.id).each do |orders| %>
+                <div class="table-responsive">
+                  <table class="table table-shopping">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Serial Number</th>
+                        <th>Order Date</th>
+                        <th>Delivery Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% index = 1 %>
+                        <tr class="text-center">
+                          <td><%= index %></td>
+                              <% index += 1 %>
+                          <td><%= orders.date.to_s(:long) %></td>
+                          <td><%= orders.status.upcase %></td>
+                          </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <hr/>
+            <% end %>
+          </div>
+          </div>
+        </div>
+      </div>
+</div>
