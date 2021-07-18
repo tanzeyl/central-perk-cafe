@@ -14,7 +14,24 @@ class MenuController < ApplicationController
 
   def destroy
     id = params[:id]
-    OrderItem.where(id: id)[0].destroy
+    OrderItem.where(id: id).destroy_all
     redirect_to "/menu"
   end
+
+  def update
+    id = params[:id]
+    orderItem = OrderItem.find(id)
+    actual = orderItem.menu_item_quatity.to_i
+    update = params[:menu_item_quatity].to_i
+    unless actual == 1 and update == -1
+      orderItem.menu_item_quatity = actual + update
+      unless orderItem.save
+        flash[:error] = orderItem.errors.full_messages.join(", ")
+      end
+    else
+      orderItem.destroy
+    end
+    redirect_to "/menu"
+  end
+
 end

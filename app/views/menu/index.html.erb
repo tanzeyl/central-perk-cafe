@@ -58,6 +58,7 @@
           <th>Serial Number</th>
           <th>Item Name</th>
           <th>Price</th>
+          <th>Quantity</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -70,11 +71,26 @@
             <% index = index + 1 %>
             <td><%= order.menu_item_name %></td>
             <td>₹ <%= order.menu_item_price %></td>
-            <td><%= form_with url: "menu/#{order.id}", method: "delete"  do |form| %>
-              <%= form.submit "Remove from Cart", class: "btn btn-primary" %>
-              <% end %></td>
-            <% total = total + order.menu_item_price %>
-            </tr>
+            <td>
+            <div class="btn-group btn-group-sm" style="display: flex;">
+              <%= form_with(url: "/menu/#{order.id}", method: "put") do |form| %>
+                <%= form.hidden_field :menu_item_quatity, value: -1 %>
+                <button class="btn btn-link btn-info"> <i class="material-icons">remove</i> </button>
+              <% end %>
+              <%= order.menu_item_quatity %>
+              <%= form_with(url: "/menu/#{order.id}", method: "put") do |form| %>
+                <%= form.hidden_field :menu_item_quatity, value: 1 %>
+                <button class="btn btn-link btn-info"> <i class="material-icons">add</i> </button>
+              <% end %>
+            </div>
+            <% total = total + order.menu_item_price * order.menu_item_quatity %>
+            </td>
+            <td>
+              <%= form_with url: "/menu/#{order.id}", method: "delete"  do |form| %>
+                <%= form.submit "Remove from Cart", class: "btn btn-primary" %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
