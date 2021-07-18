@@ -1,8 +1,8 @@
-<div class="MenuBackground">
+<div class="MenuBackground2">
         <div class="row">
           <div class="col-xs-12">
             <br>
-            <h1 class="card-title text-center">Menu</h1>
+            <h1 class="card-title text-center PageTitle2">Menu</h1>
             <% MenuCategory.where(available: true).each do |category| %>
               <% menuItems = MenuItem.where(menu_category_id: category.id, available: true) %>
               <% unless menuItems.count == 0 %>
