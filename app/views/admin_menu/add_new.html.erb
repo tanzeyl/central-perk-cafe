@@ -46,7 +46,6 @@
                 </tbody>
               </table>
             </div>
-            <hr/>
           <% end %>
         <% end %>
       </div>
@@ -55,44 +54,48 @@
   </div>
 </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 <div class="container">
   <div class="MenuBackground">
-  <div class="row">
-    <div class="col-xs-12">
-      <br>
-      <h1 class="card-title text-center">All Menu Categories</h1>
-      <% index = 1 %>
-      <% menuCat = MenuCategory.all %>
-      <% menuCat.each do |menu| %>
-        <div class="table-responsive">
-          <table class="table table-shopping">
-            <thead>
-              <tr class="text-center">
-                <th>Serial Number</th>
-                <th>Name</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center">
-                <td><%= index %></td><% index += 1 %>
-                <td><%= menu.name %></td>
-                <td>
-                  <% if menu.available == true %>
-                    <%= form_with url: "/add_cat/#{menu.id}", method: "get"  do |form| %>
-                    <%= form.submit "Marks as unavailable", class: "btn btn-danger" %>
+    <div class="row">
+      <div class="col-xs-12">
+        <br>
+        <h1 class="card-title text-center">All Menu Categories</h1>
+        <% index = 1 %>
+        <% menuCat = MenuCategory.all %>
+        <% menuCat.each do |menu| %>
+          <div class="table-responsive">
+            <table class="table table-shopping">
+              <thead>
+                <tr class="text-center">
+                  <th>Serial Number</th>
+                  <th>Name</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center">
+                  <td><%= index %></td><% index += 1 %>
+                  <td><%= menu.name %></td>
+                  <td>
+                    <% if menu.available == true %>
+                      <%= form_with url: "/add_cat/#{menu.id}", method: "get"  do |form| %>
+                      <%= form.submit "Marks as unavailable", class: "btn btn-danger" %>
+                      <% end %>
+                    <% else %>
+                      <%= form_with url: "/add_cat/#{menu.id}", method: "get"  do |form| %>
+                      <%= form.submit "Marks as available.", class: "btn btn-primary" %>
+                      <% end %>
                     <% end %>
-                  <% else %>
-                    <%= form_with url: "/add_cat/#{menu.id}", method: "get"  do |form| %>
-                    <%= form.submit "Marks as available.", class: "btn btn-primary" %>
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-      <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-</div>
-<br><br><br><br><br><br><br><hr>
+
+<br><br><br><br><br><br><br><br><br><br>

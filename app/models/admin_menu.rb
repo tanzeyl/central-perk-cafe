@@ -1,2 +1,3 @@
 class AdminMenu < ApplicationRecord
+
 end

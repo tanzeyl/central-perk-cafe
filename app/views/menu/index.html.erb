@@ -30,7 +30,7 @@
                           <td><%= menu.name %></td>
                           <td><%= menu.description %></td>
                           <td>₹ <%= menu.price %></td>
-                          <td><%= form_with url: "menu/#{menu.id}", method: "put"  do |form| %>
+                          <td><%= form_with url: "add_toCart/#{menu.id}", method: "get"  do |form| %>
                                 <%= form.submit "Add to Cart", class: "btn btn-primary" %>
                               <% end %></td>
                           </tr>

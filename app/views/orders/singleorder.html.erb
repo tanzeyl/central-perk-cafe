@@ -27,7 +27,9 @@
             </table>
           </div>
       <% end %>
-      <h3 class="ShopCart-checkout"><%= link_to "Print Invoice", "", class: "CheckoutText" %></h3>    </div>
+      <h3 class="ShopCart-checkout"><%= link_to "Print Invoice", "/dashboard", class: "CheckoutText" %></h3>
+      <% flash[:error] = "Invoice Successfully Printed!" %>
+      </div>
     </div>
   </div>
 </div>

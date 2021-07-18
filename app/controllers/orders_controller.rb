@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
 
   def create
     new_order = Order.create!(date: Date.today, user_id: @current_user.id, status: "pending", cost: session[:total_cost])
-    OrderItem.where(user_id: @current_user.id)[0].destroy
+    flash[:error] = "Order placed successfully!"
+    OrderItem.where(user_id: @current_user.id).destroy_all
     redirect_to "/dashboard"
   end
 

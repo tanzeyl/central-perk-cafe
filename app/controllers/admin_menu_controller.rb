@@ -1,4 +1,5 @@
 class AdminMenuController < ApplicationController
+
   def index
     render "index"
   end

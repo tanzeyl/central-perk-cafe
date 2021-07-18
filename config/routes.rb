@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :order_items
   resources :menu_items
   resources :admin_menu
+  get "add_toCart/:id" => "menu_items#update"
   get "/signin" => "sessions#new", as: :new_session
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session
