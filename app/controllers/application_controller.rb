@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_user_logged_in
     unless current_user
+      flash[:error] = "Kindly sign up/sign in first."
       redirect_to "/"
     end
   end

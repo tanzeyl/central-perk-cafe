@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="MenuBackground">
+  <div class="row">
+    <div class="col-xs-12">
+      <br>
+      <h1 class="card-title text-center">All Menu Categories</h1>
+      <% index = 1 %>
+      <% users = Customer.all %>
+      <% users.each do |user| %>
+        <div class="table-responsive">
+          <table class="table table-shopping">
+            <thead>
+              <tr class="text-center">
+                <th>Serial Number</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td><%= index %></td><% index += 1 %>
+                <td><%= user.first_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role.upcase %></td>
+                <td>
+                  <% if user.role == "clerk" %>
+                    <%= form_with url: "/add_admin/#{user.id}", method: "get"  do |form| %>
+                    <%= form.submit "Promote to Admin", class: "btn btn-danger" %>
+                    <% end %>
+                  <% end %>
+                  <% if user.role == "admin" %>
+                    <%= form_with url: "/add_clerk/#{user.id}", method: "get"  do |form| %>
+                    <%= form.submit "Move to Clerk", class: "btn btn-primary" %>
+                    <% end %>
+                  <% end %>
+                  <% if user.role == "customer" %>
+                  <div style="display: flex;">
+                      <%= form_with url: "/add_clerk/#{user.id}", method: "get"  do |form| %>
+                      <%= form.submit "Move to Clerk", class: "btn btn-primary" %>
+                      <% end %>
+                      <%= form_with url: "/add_admin/#{user.id}", method: "get"  do |form| %>
+                      <%= form.submit "Move to Admin", class: "btn btn-primary" %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+<br><br><br><br><br><br><br><hr>

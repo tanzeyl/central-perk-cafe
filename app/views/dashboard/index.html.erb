@@ -1,9 +1,6 @@
-<% if @current_user.role == "customer" %>
-  <div class="DashboardButton">
-  <% @current_user.role %>
+<div class="DashboardButton">
   <h3><%= link_to "Make an Order", "/menu", class: "DashboardText" %></h3>
-  </div>
-<% end %>
+</div>
 <br>
 
 <div class="DashboardButton">
@@ -28,7 +25,8 @@
   </div>
   <br>
   <div class="DashboardButton">
-  <h3><%= link_to "Add a new Admin/Clerk", "/pendingorders", class: "DashboardText" %></h3>
+  <h3><%= link_to "Add a new Admin/Clerk", "/add_user", class: "DashboardText" %></h3>
   </div>
   <br>
 <% end %>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get "/edit_menu" => "admin_menu#edit_menu"
   get "add_items/:id" => "admin_menu#add_items"
   get "add_cat/:id" => "admin_menu#add_cat"
-
+  get "add_user" => "admin_menu#add_user"
+  get "add_admin/:id" => "admin_menu#add_admin"
+  get "add_clerk/:id" => "admin_menu#add_clerk"
 end

@@ -1,5 +1,4 @@
 class AdminMenuController < ApplicationController
-
   def index
     render "index"
   end
@@ -32,6 +31,26 @@ class AdminMenuController < ApplicationController
       item.save
     end
     redirect_to "/edit_menu"
+  end
+
+  def add_user
+    render "add_user"
+  end
+
+  def add_admin
+    id = params[:id]
+    item = Customer.find(id)
+    item.role = "admin"
+    item.save
+    redirect_to "/add_user"
+  end
+
+  def add_clerk
+    id = params[:id]
+    item = Customer.find(id)
+    item.role = "clerk"
+    item.save
+    redirect_to "/add_user"
   end
 
 end
