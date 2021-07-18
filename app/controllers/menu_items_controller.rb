@@ -15,12 +15,17 @@ class MenuItemsController < ApplicationController
   end
 
   def update
+    temp = OrderItem.where(menu_item_id: params[:id], user_id: @current_user.id)
     order = MenuItem.find(params[:id])
-    new_order = OrderItem.create!(menu_item_id: order.id,
-                                  menu_item_name: order.name,
-                                  menu_item_price: order.price,
-                                  menu_item_quatity: 1,
-                                  user_id: @current_user.id)
+    if temp.count == 0
+      new_order = OrderItem.create!(menu_item_id: order.id,
+                                    menu_item_name: order.name,
+                                    menu_item_price: order.price,
+                                    menu_item_quatity: 1,
+                                    user_id: @current_user.id)
+    else
+      flash[:error] = "Item already in cart."
+    end
     redirect_to "/menu"
   end
 
