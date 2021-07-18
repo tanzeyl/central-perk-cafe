@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   get "/pendingorders" => "orders#orderupdate"
   post "/change_status/:id" => "orders#change_status"
   get "/singleorder/:id" => "orders#show"
+  get "/edit_menu" => "admin_menu#edit_menu"
+  get "add_items/:id" => "admin_menu#add_items"
+  get "add_cat/:id" => "admin_menu#add_cat"
+
 end

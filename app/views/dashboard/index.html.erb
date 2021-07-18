@@ -20,14 +20,15 @@
 
 <% if @current_user.role == "admin" %>
   <div class="DashboardButton">
-  <h3><%= link_to "Edit Menu", admin_menu_index_path, class: "DashboardText" %></h3>
+  <h3><%= link_to "Add new menu items.", admin_menu_index_path, class: "DashboardText" %></h3>
   </div>
   <br>
   <div class="DashboardButton">
-  <h3><%= link_to "Add a new Admin", "/pendingorders", class: "DashboardText" %></h3>
+  <h3><%= link_to "Edit existing menu.", "/edit_menu" , class: "DashboardText" %></h3>
   </div>
   <br>
   <div class="DashboardButton">
-  <h3><%= link_to "Add a new Clerk", "/pendingorders", class: "DashboardText" %></h3>
+  <h3><%= link_to "Add a new Admin/Clerk", "/pendingorders", class: "DashboardText" %></h3>
   </div>
+  <br>
 <% end %>
